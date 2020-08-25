@@ -1,6 +1,18 @@
-# ML_with_Flutter
+# Pot-Hole Detector with Flutter
 
-A new Flutter project.
+[![Codemagic build status](https://api.codemagic.io/apps/5f44eba2a048040017aabcf5/5f44eba2a048040017aabcf4/status_badge.svg)](https://codemagic.io/apps/5f44eba2a048040017aabcf5/5f44eba2a048040017aabcf4/latest_build)
+![](https://img.shields.io/badge/Made%20with-Flutter-blue)
+<br>  
+![App template](https://github.com/parthpanchal123/ML_with_Flutter/blob/master/Screenshots/ml_app_promo.png)
+
+A simple cross platform application that utilizes tflite library which makes easy using tflite models right within the flutter app . It tries to predict whether a picture has pot-holes in it or not , as of now . Plan further to integrate real-time detection from video feed as well .
+
+ ## Resources used
+ * [Pothole dataset](https://www.kaggle.com/atulyakumar98/pothole-detection-dataset) , which contains training images .
+ * [Teachable](https://teachablemachine.withgoogle.com/) for training the model (I'm not good doing that myself :P)
+ * [Tflite Package](https://pub.dev/packages/tflite) for using the TFlite model within the app itself
+ * [Image Picker](https://pub.dev/packages/image_picker) for picking image wither from the gallery or camera .
+
 
 ## Getting Started
 
