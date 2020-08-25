@@ -56,21 +56,20 @@ class _HomeScreenState extends State<HomeScreen> {
         asynch: true // defaults to true
         );
 
-    setState(() {
-      result = recognitions[0]['index'];
-      print(recognitions);
-      confidencePercent = recognitions[0]['confidence'];
+    result = recognitions[0]['index'];
+    print(recognitions);
+    confidencePercent = recognitions[0]['confidence'];
 
-      if (result == 1) {
+    if (result == 1) {
+      setState(() {
         potHoleFound = true;
-      } else {
-        potHoleFound = false;
-      }
-    });
-
-    setState(() {
-      isLoading = false;
-    });
+        isLoading = false;
+      });
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   Future getImage() async {
@@ -93,6 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(potHoleFound);
     return Scaffold(
       appBar: AppBar(
         title: Text('Pot-hole Detector'),
@@ -121,41 +121,34 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 20,
                     ),
-                    potHoleFound == true
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        result == 1
+                            ? Text(
                                 "Pothole Found",
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.done_outline,
-                                color: Colors.greenAccent,
                               )
-                            ],
-                          )
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
+                            : Text(
                                 "Pothole Not Found",
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
+                        SizedBox(
+                          width: 10,
+                        ),
+                        result == 1
+                            ? Icon(
+                                Icons.done_outline,
+                                color: Colors.greenAccent,
+                              )
+                            : Icon(
                                 Icons.not_interested,
                                 color: Colors.redAccent,
                               )
-                            ],
-                          ),
+                      ],
+                    ),
                     SizedBox(
                       height: 10.0,
                     ),
